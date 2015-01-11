@@ -14,13 +14,12 @@ Include contexttoolbar.js in your markup:
     <script src="contexttoolbar.js"></script>
 
 ##Usage
-Configuration via options:
- HTML:
- <div id="page-editor-toolbar"></div>
- <textarea ng-model="pageModel.content" redactor="redactorOptions"></textarea>
- 
- Controller:
- $scope.redactorOptions = {
+Configuration via controller options:
+
+     <div id="page-editor-toolbar"></div>
+     <textarea ng-model="pageModel.content" redactor="redactorOptions"></textarea>
+     
+     $scope.redactorOptions = {
         toolbarExternal: '#page-editor-toolbar',
         focus: true,
         plugins: ['imagemanager', 'fontfamily', 'fontsize', 'fontcolor', 'table', 'contexttoolbar'],
@@ -48,7 +47,8 @@ Configuration via options:
       };
 	  
 Configuration via Markup:
-	<textarea ng-model="pageModel.content"
+
+    <textarea ng-model="pageModel.content"
         redactor="{
           plugins:[
             'contexttoolbar'
