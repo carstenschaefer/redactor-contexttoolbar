@@ -11,66 +11,74 @@ Feel free to contribute to this repository.
 
 Include contexttoolbar.js in your markup:
 
-    <script src="contexttoolbar.js"></script>
+```html
+<script src="contexttoolbar.js"></script>
+```
 
 ##Usage
 Configuration via controller options:
 
-     <div id="page-editor-toolbar"></div>
-     <textarea ng-model="pageModel.content" redactor="redactorOptions"></textarea>
-     
-     $scope.redactorOptions = {
-        toolbarExternal: '#page-editor-toolbar',
-        focus: true,
-        plugins: ['imagemanager', 'fontfamily', 'fontsize', 'fontcolor', 'table', 'contexttoolbar'],
-        contexttoolbar: {
-          buttons: [
-            'formatting',
-            'bold',
-            'italic',
-            'unorderedlist',
-            'orderedlist',
-            'outdent',
-            'indent',
-            'alignment',
-            'fontfamily',
-            'fontsize',
-            'fontcolor',
-            'backcolor'
-          ],
-          plugins: [
-              'fontcolor',
-              'fontsize',
-              'fontfamily'
-          ]
-        }
-      };
+```html
+<div id="page-editor-toolbar"></div>
+<textarea ng-model="pageModel.content" redactor="redactorOptions"></textarea>
+ ```
+
+```js
+$scope.redactorOptions = {
+toolbarExternal: '#page-editor-toolbar',
+focus: true,
+plugins: ['imagemanager', 'fontfamily', 'fontsize', 'fontcolor', 'table', 'contexttoolbar'],
+contexttoolbar: {
+  buttons: [
+    'formatting',
+    'bold',
+    'italic',
+    'unorderedlist',
+    'orderedlist',
+    'outdent',
+    'indent',
+    'alignment',
+    'fontfamily',
+    'fontsize',
+    'fontcolor',
+    'backcolor'
+  ],
+  plugins: [
+      'fontcolor',
+      'fontsize',
+      'fontfamily'
+  ]
+}
+};
+```
 	  
 Configuration via Markup:
 
-    <textarea ng-model="pageModel.content"
-        redactor="{
-          plugins:[
-            'contexttoolbar'
-          ],
-          toolbarExternal: '#page-editor-toolbar',
-          contexttoolbar:{
-            buttons:[
-              'formatting',
-              'bold',
-              'italic',
-              'unorderedlist',
-              'orderedlist',
-              'outdent',
-              'indent',
-              'alignment',
-            ],
-            plugins:[
-              'fontcolor',
-              'fontsize',
-              'fontfamily'
-            ]
-          }
-        }"
-        cols="30"
-        rows="10"></textarea>
+```html
+<textarea ng-model="pageModel.content"
+redactor="{
+  plugins:[
+    'contexttoolbar'
+  ],
+  toolbarExternal: '#page-editor-toolbar',
+  contexttoolbar:{
+    buttons:[
+      'formatting',
+      'bold',
+      'italic',
+      'unorderedlist',
+      'orderedlist',
+      'outdent',
+      'indent',
+      'alignment',
+    ],
+    plugins:[
+      'fontcolor',
+      'fontsize',
+      'fontfamily'
+    ]
+  }
+}"
+cols="30"
+rows="10"></textarea>
+```
