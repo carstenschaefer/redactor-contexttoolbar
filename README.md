@@ -1,6 +1,19 @@
 # redactor-contexttoolbar
 Adds a configurable toolbar as a context menu
 
+http://imperavi.com/redactor/
+
+A plugin developed for Redactor, a WYSIWYG rich-text editor made by @imperavi.
+
+Feel free to contribute to this repository.
+
+##Installation
+
+Include contexttoolbar.js in your markup:
+
+    <script src="contexttoolbar.js"></script>
+
+##Usage
 Configuration via options:
  HTML:
  <div id="page-editor-toolbar"></div>
