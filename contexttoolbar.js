@@ -18,7 +18,7 @@ if (!RedactorPlugins) var RedactorPlugins = {};
         this.opts.dropdownShownCallback = this.contexttoolbar.onDropdownShown.bind(this);
 
         $(document).on('click', this.contexttoolbar.hideToolbar.bind(this));
-        $(document).on('scroll', this.contexttoolbar.hideToolbar.bind(this));
+        $(document).on('scroll wheel mousewheel', this.contexttoolbar.hideToolbar.bind(this));
 
         this.$toolbar.find('a.re-icon').on('click', this.contexttoolbar.observeDropdownShow.bind(this));
       },
