@@ -16,7 +16,7 @@ Include contexttoolbar.js in your markup:
 ```
 
 ##Usage
-Configuration via controller options currently untested. Please use HTML markup:
+Configuration via HTML markup:
 
 ```html
 <div id="page-editor-toolbar"></div>
