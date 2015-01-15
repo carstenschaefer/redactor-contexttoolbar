@@ -20,34 +20,31 @@ Configuration via controller options:
 
 ```html
 <div id="page-editor-toolbar"></div>
-<textarea ng-model="pageModel.content" redactor></textarea>
- ```
-
-```js
-$scope.redactorOptions = {
-  toolbarExternal: '#page-editor-toolbar',
-  focus: true,
-  plugins: ['imagemanager', 'fontfamily', 'fontsize', 'fontcolor', 'table', 'contexttoolbar'],
-  contexttoolbar: {
-    buttons: [
-      'formatting',
-      'bold',
-      'italic',
-      'unorderedlist',
-      'orderedlist',
-      'outdent',
-      'indent',
-      'alignment',
-      'fontfamily',
-      'fontsize',
-      'fontcolor',
-      'backcolor'
-    ],
-    plugins: [
-        'fontcolor',
-        'fontsize',
-        'fontfamily'
-    ]
-  }
-};
-```
+ <textarea ng-model="pageModel.content"
+                redactor="{
+                          focus: true,
+                          linebreaks: false,
+                          tabKey: true,
+                          plugins: ['fontfamily', 'fontsize', 'fontcolor', 'table', 'contexttoolbar'],
+                          toolbarExternal: '#page-editor-toolbar',
+                          contexttoolbar:{
+                            buttons:[
+                              'formatting',
+                              'bold',
+                              'italic',
+                              'unorderedlist',
+                              'orderedlist',
+                              'outdent',
+                              'indent',
+                              'alignment',
+                            ],
+                            plugins:[
+                              'fontcolor',
+                              'fontsize',
+                              'fontfamily'
+                            ]},
+                            blurCallback: blurCallbackFunction,
+                            focusCallback: focusCallbackFunction
+                            }"></textarea>
+ ````
+ 
