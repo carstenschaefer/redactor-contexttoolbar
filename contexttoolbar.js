@@ -4,10 +4,51 @@ if (!RedactorPlugins) var RedactorPlugins = {};
   RedactorPlugins.contexttoolbar = function () {
     var $_contextToolbar = null;
     var $_shownDropdown = null;
+    var options = null;
+
+    var keys = [37, 38, 39, 40];   // left: 37, up: 38, right: 39, down: 40, spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+
+    function preventDefault(e) {
+      e = e || window.event;
+      if (e.preventDefault)
+        e.preventDefault();
+      e.returnValue = false;
+    };
+
+    function keydown(e) {
+      for (var i = keys.length; i--;) {
+        if (e.keyCode === keys[i]) {
+          preventDefault(e);
+          return;
+        }
+      }
+    };
+
+    function wheel(e) {
+      preventDefault(e);
+    };
+
+    function disableScroll() {
+      if (window.addEventListener) {
+        window.addEventListener('DOMMouseScroll', wheel, false);
+      }
+      window.onmousewheel = document.onmousewheel = wheel;
+      document.onkeydown = keydown;
+    };
+
+    function enableScroll() {
+      if (window.removeEventListener) {
+        window.removeEventListener('DOMMouseScroll', wheel, false);
+      }
+      window.onmousewheel = document.onmousewheel = document.onkeydown = null;
+    };
+
 
     return {
       init: function () {
         $_contextToolbar = this.contexttoolbar.createToolbar();
+
+        options = this.opts.contexttoolbar || {};
 
         this.contexttoolbar.loadButtons();
         this.core.getBox().append($_contextToolbar);
@@ -18,8 +59,6 @@ if (!RedactorPlugins) var RedactorPlugins = {};
         this.opts.dropdownShownCallback = this.contexttoolbar.onDropdownShown.bind(this);
 
         $(document).on('click', this.contexttoolbar.hideToolbar.bind(this));
-        $(document).on('scroll wheel mousewheel', this.contexttoolbar.hideToolbar.bind(this));
-
         this.$toolbar.find('a.re-icon').on('click', this.contexttoolbar.observeDropdownShow.bind(this));
       },
       createToolbar: function () {
@@ -35,7 +74,6 @@ if (!RedactorPlugins) var RedactorPlugins = {};
             });
       },
       loadButtons: function () {
-        var options = this.opts.contexttoolbar || {};
         var _originButtons = this.opts.buttons;
         this.opts.buttons = options.buttons || _originButtons;
 
@@ -56,6 +94,13 @@ if (!RedactorPlugins) var RedactorPlugins = {};
         this.$toolbar = $_originToolbar;
       },
       showToolbar: function (event) {
+
+        if (options.scroll === true) {
+          $(document).on('scroll wheel mousewheel', this.contexttoolbar.hideToolbar.bind(this));
+        } else if (options.scroll === false) {
+          disableScroll();
+        }
+     
         event.preventDefault();
         var $buttons = $_contextToolbar.find('> li');
         var contextWidth = $buttons.length * this.$toolbar.find('> li').innerWidth();
@@ -91,6 +136,10 @@ if (!RedactorPlugins) var RedactorPlugins = {};
           $_shownDropdown.fadeOut();
         }
         $_contextToolbar.fadeOut();
+
+        if (options.hasOwnProperty('scroll') && options.scroll === false) {
+          enableScroll();
+        }
       },
       observeDropdownShow: function (event) {
         var $btn = $(event.target);
