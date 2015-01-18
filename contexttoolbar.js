@@ -59,6 +59,15 @@ if (!RedactorPlugins) var RedactorPlugins = {};
         this.opts.dropdownShownCallback = this.contexttoolbar.onDropdownShown.bind(this);
 
         $(document).on('click', this.contexttoolbar.hideToolbar.bind(this));
+        
+         //close on ESC
+        var that = this;
+        $(document).keydown(function (e) {
+          if (e.keyCode === 27) {
+            that.contexttoolbar.hideToolbar();
+          }
+        });
+        
         this.$toolbar.find('a.re-icon').on('click', this.contexttoolbar.observeDropdownShow.bind(this));
       },
       createToolbar: function () {
