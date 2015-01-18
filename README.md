@@ -28,6 +28,7 @@ Configuration via HTML markup:
                           plugins: ['fontfamily', 'fontsize', 'fontcolor', 'table', 'contexttoolbar'],
                           toolbarExternal: '#page-editor-toolbar',
                           contexttoolbar:{
+                            scroll: false,
                             buttons:[
                               'formatting',
                               'bold',
@@ -48,3 +49,7 @@ Configuration via HTML markup:
                             }"></textarea>
  ````
  
+###Description of scroll property:
+   scroll: true   ->  allows scrolling while context toolbar is shown. Will close context toolbar automatically
+  
+   scroll: false  ->  prevents any scrolling (mouse, keyboard) while context toolbar is shown
