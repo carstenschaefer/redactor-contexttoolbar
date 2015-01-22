@@ -50,6 +50,6 @@ Configuration via HTML markup:
  ````
  
 ###Description of scroll property:
-   scroll: true   ->  allows scrolling while context toolbar is shown. Will close context toolbar automatically
+   scroll: true   ->  allows scrolling while context toolbar is open. Will close context toolbar automatically
   
-   scroll: false  ->  prevents any scrolling (mouse, keyboard) while context toolbar is shown
+   scroll: false  ->  prevents any scrolling (mouse, keyboard) while context toolbar is open.
